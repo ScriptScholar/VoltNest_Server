@@ -10,6 +10,7 @@ const userRouter = require("./User/UserRouter")
 const cartRouter = require("./Cart/CartRouter")
 const addressRouter = require("./Address/AddressRouter")
 const orderRouter = require("./Order/OrederRouter")
+require("dotenv").config();
 
 const app = express()
 connectDb()
