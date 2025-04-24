@@ -27,7 +27,7 @@ class UserController {
     async loginUser(req, res) {
         try {
             const { phone, password, role } = req.body
-            if (!phone || !password || !role) throw httpErrors[400]
+            if (!phone || !password) throw httpErrors[400]
             const User = await userModel.model.findOne({ phone: phone })
             if (!User) return res.status(500).send({ message: httpUNF })
             if (!bcrypt.compareSync(password, User.password)) throw httpErrors[401]
