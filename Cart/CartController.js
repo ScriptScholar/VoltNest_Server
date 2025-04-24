@@ -28,7 +28,7 @@ class CartController {
                 userId: true,
                 productId: true,
                 qty: true,
-                url: APP_URL
+                url: APP_URL || process.env.APP_URL
             }).populate([{ path: "userId" }, { path: "productId", populate: { path: "image" } }])
             if (!result) throw httpErrors[500]
             return res.status(200).send({ message: httpSuccess, data: result })

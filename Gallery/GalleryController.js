@@ -33,7 +33,7 @@ class GalleryController {
                 title: true,
                 _id: true,
                 path: true,
-                url: { $concat: [APP_URL, "$path"] }
+                url: { $concat: [APP_URL || process.env.APP_URL, "$path"] }
             }).sort({ "createdAt": -1 })
             if (!result) throw httpErrors[500]
             return res.status(200).send({ message: httpSuccess, data: result })

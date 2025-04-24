@@ -1,6 +1,7 @@
 module.exports = {
     PORT: 5000,
-    APP_URL: "http://192.168.1.2:5000",
+    // APP_URL: "http://192.168.1.2:5000",
+    APP_URL: "https://voltnest-server.onrender.com",
     DB_URL: "mongodb+srv://scriptscholartech:A0uFDRw9faIfyO0C@voltnest.qp8rtqw.mongodb.net/VoltNest",
     // DB_URL: "mongodb://127.0.0.1:27017/VoltNest",
     JWT_SECRETS: "JWT_SECRETS",

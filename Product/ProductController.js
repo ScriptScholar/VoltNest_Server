@@ -78,7 +78,7 @@ class ProductController {
             const result = await productModel.model.find({}, {
                 image: true, category: true, price: true, title: true, discount: true,
                 content: true, Highlight: true, rating: true, numReview: true, brand: true,
-                url: APP_URL
+                url: APP_URL || process.env.APP_URL
             }).populate([{ path: "category" }, { path: "image" }])
             if (!result) throw httpErrors[500]
             return res.status(200).send({ message: httpSuccess, data: result })
@@ -117,14 +117,14 @@ class ProductController {
             const result = await productModel.model.findOne({ _id: id }, {
                 image: true, category: true, price: true, title: true, discount: true,
                 content: true, Highlight: true, rating: true, numReview: true, brand: true,
-                url: APP_URL
+                url: APP_URL || process.env.APP_URL
             }).populate([{ path: "category" }, { path: "image" }])
             if (!result) throw httpErrors[500]
             // Convert to plain object and append image URL
             const product = result.toObject();
 
             if (product.image && product.image.path) {
-                product.url = `${APP_URL}${product.image.path}`;
+                product.url = `${APP_URL || process.env.APP_URL}${product.image.path}`;
             } else {
                 product.url = null;
             }
@@ -142,7 +142,7 @@ class ProductController {
             let result = await productModel.model.find({}, {
                 image: true, category: true, price: true, title: true, discount: true,
                 content: true, Highlight: true, rating: true, numReview: true, brand: true,
-                url: APP_URL
+                url: APP_URL || process.env.APP_URL
             }).populate([{ path: "category" }, { path: "image" }])
             if (itemType === "main") {
                 result = result.filter((x) => x.category.alias.split("_")[1] === "main")
